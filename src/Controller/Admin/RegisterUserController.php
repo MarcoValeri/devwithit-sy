@@ -27,7 +27,7 @@ class RegisterUserController extends AbstractController
 
             $user = new User();
             $user->setEmail($formInputs['email']);
-            $user->setRoles([$formInputs['roles']]);
+            $user->setRoles($formInputs['roles']);
             $user->setPassword($passwordHasher->hashPassword($user, $formInputs['password']));
 
             $em = $doctrine->getManager();
