@@ -27,7 +27,8 @@ class RegisterUserForm extends AbstractType
                 'expanded' => true,
                 'multiple'  => true,
                 'choices'   => [
-                    'ROLE_ADMIN' => 'ROLE_ADMIN'
+                    'ROLE_ADMIN' => 'ROLE_ADMIN',
+                    'ROLE_USER'  => 'ROLE_USER'
                 ]
             ])
             ->add('password', RepeatedType::class, [
