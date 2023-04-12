@@ -1,0 +1,141 @@
+// Logo
+.brand-name {
+    font-size: 4rem;
+    color: #fff;
+
+    @include respond(md) {
+        font-size: 3rem;
+    }
+}
+
+// H tags and Paragraph
+.h1 {
+    font-size: 7rem;
+
+    @include respond(sm) {
+        font-size: 5rem;
+    }
+}
+
+.h2 {
+    font-size: 5rem;
+
+    @include respond(sm) {
+        font-size: 4rem;
+    }
+}
+
+.h3 {
+    font-size: 3rem;
+}
+
+.h4 {
+    font-size: 2.5rem;
+}
+
+.body-1 {
+    font-size: 2.4rem;
+}
+
+.body-2 {
+    font-size: 2.2rem;
+}
+
+.body-3 {
+    font-size: 2rem
+}
+
+.body-4 {
+    font-size: 1.8rem;
+}
+
+.p {
+    font-size: 1.6rem;
+}
+
+.p--bold {
+    font-weight: 900;
+}
+
+// Links
+.no-link {
+    text-decoration: none;
+    color: $black;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.no-link--white {
+    text-decoration: none;
+    color: $white;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.link {
+    color: $white-light;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.link-effect-load {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: $white;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: $white-light;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+
+.link-mark {
+    display: inline-block;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(1);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: $white-light;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+}
+
+// List no stye for ul and ol
+.list-no-style {
+    list-style-type: none;
+}
+
+// Errors
+.error {
+    font-size: 1.6rem;
+    color: $red;
+}

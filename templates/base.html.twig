@@ -17,6 +17,43 @@
         {% endblock %}
     </head>
     <body>
+        <header class="header">
+            <nav class="navbar">
+                <div class="navbar__toggle">
+                    <label for="navbar menu" aria-label="navbar menu"></label>
+                    <input id="navbar menu" name="navbar menu" class="navbar__input" type="checkbox" aria-label="navbar menu" />
+                    <span class="navbar__span"></span>
+                    <span class="navbar__span"></span>
+                    <span class="navbar__span"></span>
+                    <ul class="navbar__menu">
+                        {% if app.request.attributes.get('_route') is not null %}
+                            <li class="navbar__item navbar__logo">
+                                <a class="brand-name no-link--white" href="{{ path('app_home') }}">Dev With It</a>
+                            </li>
+                            <li class="navbar__item">
+                                <a class="navbar__link link-effect-load {{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == "/" ? 'link-mark' : '' }}" href="{{ path('app_home') }}">Home</a>
+                            </li>
+                            {% if is_granted('ROLE_ADMIN')  %}
+                                <li class="navbar__item">
+                                    <a class="navbar__link link-effect-load" href="{{ path('app_admin') }}">Admin</a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+            <div class="header__container-content">
+                <div class="header__content-wrapper">
+                    <h1 class="h1">Dew With It</h1>
+                    <h2 class="h2">Home</h2>
+                </div>
+            </div>
+        </header>
         {% block body %}{% endblock %}
+        <footer class="footer">
+            <div class="footer__container-rights">
+                <p class="footer__rights body-4">Made with <span class="heart">&hearts;</span> in London by Dev With It - &copy; {{ "now"|date("Y") }} - All rights reserved</p>
+            </div>
+        </footer>
     </body>
 </html>

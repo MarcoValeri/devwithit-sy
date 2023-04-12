@@ -1,0 +1,10 @@
+.header {
+    height: 50vh;
+    color: $white;
+    background-color: $blue;
+
+    &__content-wrapper {
+        text-align: center;
+        padding: 2rem;
+    }
+}
