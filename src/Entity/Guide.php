@@ -32,6 +32,9 @@ class Guide
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
+    #[ORM\ManyToOne(targetEntity: Image::class, inversedBy: 'guide')]
+    private $image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Guide
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getImage(): ?Image
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Image $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
