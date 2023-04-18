@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{# Set Guide's variables #}
+{% if guide %}
+    {% set guideTitle = guide.title %}
+    {% set guideDescription = guide.description %}
+    {% set guideUrl = guide.url %}
+    {% set guideCreated = guide.created %}
+    {% set guideUpdated = guide.updated %}
+    {% set guideContent = guide.content %}
+{% endif %}
+
+{# 
+# Set up date variables.
+# Use seconds to compare date.
+# This date is +1hour to UK time
+# it is like Italy time
+#}
+{% set getDateToday = "now"|date('U') %}
+
+{% block title %}
+    <title>{{ guideTitle|raw }}</title>
+{% endblock %}
+
+{% block description %}
+    <meta name="Description" CONTENT="{{ guideDescription|raw }}">
+{% endblock %}
+
+{% block data_structure %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "Article",
+            "headline": "{{ guideTitle|raw }}"
+        },
+        {
+            "datePublished": "{{ guideCreated|date('Y-m-d') }}",
+            "dateModified": "{{ guideUpdated|date('Y-m-d') }}",
+            "author" {
+                "@type": "Person",
+            },
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+    {% if (getDateToday > guideCreated|date('U')) %}
+        <h1>Guide</h1>
+        <h2>{{ slug }}</h2>
+        <h2>{{ guide.title }}</h2>
+    {% endif %}
+{% endblock %}
