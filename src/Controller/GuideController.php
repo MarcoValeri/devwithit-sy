@@ -13,9 +13,14 @@ class GuideController extends AbstractController
     {
         $guide = $guideRepository->findOneBy(['url' => $slug]);
 
-        return $this->render("guides/guide.html.twig", [
-            'guide'    => $guide,
-            'slug'      => $slug
-        ]);
+        if ($guide) {
+            return $this->render("guides/guide.html.twig", [
+                'guide'    => $guide,
+                'slug'      => $slug
+            ]);
+        } else {
+            return $this->redirectToRoute('app_error404');
+        }
+
     }
 }
