@@ -43,10 +43,32 @@
     </script>
 {% endblock %}
 
+{% block titleHeader %}
+    <h2 class="h2">Guide</h2>
+{% endblock %}
+
 {% block body %}
-    {% if (getDateToday > guideCreated|date('U')) %}
-        <h1>Guide</h1>
-        <h2>{{ slug }}</h2>
-        <h2>{{ guide.title }}</h2>
-    {% endif %}
+    <div class="main">
+        <div class="main__content">
+            {% if (getDateToday > guideCreated|date('U')) %}
+                <article class="article">
+                    <div class="article__container-title">
+                        <h1 class="h1">{{ guideTitle }}</h1>
+                    </div>
+                    <div class="article__container-data">
+                        <ul class="article__menu-data">
+                            <li class="article__data p p--bold">Published: {{ guideCreated|date('d-m-Y')  }}</li>
+                            <li class="article__data p p--bold">Updated: {{ guideUpdated|date('d-m-Y')  }}</li>
+                        </ul>
+                    </div>
+                    <div class="article__container-content">
+                        {{ guideContent | raw }}
+                    </div>
+                </article>
+            {% endif %}
+        </div>
+        <div class="main__sidebar">
+            <h1>Side Bar</h1>
+        </div>
+    </div>
 {% endblock %}

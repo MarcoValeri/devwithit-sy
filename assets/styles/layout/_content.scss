@@ -1,0 +1,67 @@
+.content {
+    padding: 2rem 0;
+
+    &__container-image {
+        width: 80%;
+        margin: auto;
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    // Style html content
+    h1 {
+        font-size: 7rem;
+    
+        @include respond(sm) {
+            font-size: 5rem;
+        }
+    }
+    
+    h2 {
+        font-size: 5rem;
+    
+        @include respond(sm) {
+            font-size: 4rem;
+        }
+    }
+    
+    h3 {
+        font-size: 3rem;
+    }
+    
+    h4 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 2.2rem;
+        line-height: 1.6;
+    }
+
+    p a {
+        color: $blueLink;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    ul, ol {
+        margin-left: 4rem;
+
+        li {
+            font-size: 2.2rem;
+        }
+
+        a {
+            color: $blueLink;
+    
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+}

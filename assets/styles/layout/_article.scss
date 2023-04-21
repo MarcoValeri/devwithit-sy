@@ -1,0 +1,16 @@
+.article {
+    width: 80%;
+    margin: auto;
+    
+    &__container-title {
+        margin-bottom: 2rem;
+    }
+
+    &__menu-data {
+        list-style: none;
+    }
+
+    &__data {
+        margin-bottom: .5rem;
+    }
+}

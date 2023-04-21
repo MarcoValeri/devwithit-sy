@@ -1,0 +1,29 @@
+.main {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+    "main__content main__sidebar";
+
+    @include respond(md) {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "main__content"
+        "main__sidebar";
+    }
+
+    &__content {
+        grid-area: main__content;
+        padding: 5rem 2rem;
+        border: 1px solid #f00;
+
+        @include respond(md) {
+            padding: 5rem 1rem;
+        }
+    }
+
+    &__sidebar {
+        grid-area: main__sidebar;
+        padding: 5rem 2rem;
+        border: 1px solid #f00;
+    }
+}

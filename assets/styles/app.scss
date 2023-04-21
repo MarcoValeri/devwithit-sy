@@ -8,6 +8,9 @@
 @import './base/typography';
 
 // Include layout files
+@import './layout/article';
+@import './layout/content';
 @import './layout/footer';
 @import './layout/header';
 @import './layout/navbar';
+@import './layout/main';
