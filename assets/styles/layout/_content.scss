@@ -64,4 +64,14 @@
         }
     }
 
+    // Code
+    pre {
+        background-color: $blackCode;
+        color: $white;
+        font-size: 2rem;
+        padding: 1rem;
+        white-space: pre-wrap;
+        overflow-x: auto;
+    }
+
 }
