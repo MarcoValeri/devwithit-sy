@@ -23,4 +23,15 @@ class GuideController extends AbstractController
         }
 
     }
+
+    #[Route('/guides', name: 'app_archive_guides')]
+    public function guideArchive(GuideRepository $guideRepository)
+    {
+        $guides = $guideRepository->findAll();
+
+        return $this->render("guides/guides-archive.html.twig", [
+            'pageTitle'     => "Guides Archive",
+            'guides'        => $guides
+        ]);
+    }
 }

@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{# 
+# Set up date variables.
+# Use seconds to compare date.
+# This date is +1hour to UK time
+# it is like Italy time
+#}
+{% set getDateToday = "now"|date('U') %}
+
+{% block title %}
+    <title>{{ pageTitle }}</title>
+{% endblock %}
+
+{% block titleHeader %}
+    <h2 class="h2">{{ pageTitle }}</h2>
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="main__content">
+            <div class="guides-archive">
+                <div class="latest-articles">
+                    <div class="latest-articles__container-title">
+                        <h2 class="latest-articles__title h2">Guides Archive</h2>
+                    </div>
+                    <div class="latest-articles__container-articles">
+                        {% if (guides) %}
+                            {% for guide in guides %}
+                                {% if getDateToday > guide.created|date('U') and loop.index < 10 %}
+                                    <div class="article-card">
+                                        <a class="article-card__wrapper" href="guide/{{ guide.url }}">
+                                            <div class="article-card__container-title">
+                                                <h2 class="h3">{{ guide.title }}</h2>
+                                            </div>
+                                            <div class="article-card__container-data">
+                                                <p class="p p--bold">Created: {{ guide.created|date('d F Y') }} - Updated: {{ guide.updated|date('d F Y') }}</p>
+                                            </div>
+                                            <div class="article-card__container-content">
+                                                <div class="article-card__container-content-tags">
+                                                    <ul class="article-card__tags-menu">
+                                                        <li class="article-card__tag p">PHP</li>
+                                                        <li class="article-card__tag p">Symfony</li>
+                                                        <li class="article-card__tag p">MySQL</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="article-card__container-content-summary">
+                                                    {% set guidePreview = guide.content|slice(0, 500) %}
+                                                    <p class="article-card__summary body-3">{{ guidePreview|striptags }}...</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main__sidebar"></div>
+    </div>
+{% endblock %}
