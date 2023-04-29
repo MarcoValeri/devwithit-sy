@@ -15,7 +15,7 @@ class GuideController extends AbstractController
 
         if ($guide) {
             return $this->render("guides/guide.html.twig", [
-                'guide'    => $guide,
+                'guide'     => $guide,
                 'slug'      => $slug
             ]);
         } else {

@@ -7,10 +7,14 @@
 @import './base/font';
 @import './base/typography';
 
+// Import component files
+@import './components/article-card';
+
 // Include layout files
 @import './layout/article';
 @import './layout/content';
 @import './layout/footer';
 @import './layout/header';
+@import './layout/latest-articles';
 @import './layout/navbar';
 @import './layout/main';
