@@ -4,7 +4,7 @@
     grid-template-areas:
     "main__content main__sidebar";
 
-    @include respond(md) {
+    @include respond(lg) {
         grid-template-columns: 1fr;
         grid-template-areas:
         "main__content"
@@ -14,16 +14,18 @@
     &__content {
         grid-area: main__content;
         padding: 5rem 2rem;
-        border: 1px solid #f00;
 
-        @include respond(md) {
+        @include respond(lg) {
             padding: 5rem 1rem;
+        }
+
+        @include respond(sm) {
+            padding: 5rem 0;
         }
     }
 
     &__sidebar {
         grid-area: main__sidebar;
         padding: 5rem 2rem;
-        border: 1px solid #f00;
     }
 }

@@ -65,13 +65,38 @@
     }
 
     // Code
+    &__code-file {
+        overflow-wrap: break-word;
+    }
+    
     pre {
         background-color: $blackCode;
         color: $white;
-        font-size: 2rem;
+        font-size: 1.6rem;
         padding: 1rem;
         white-space: pre-wrap;
         overflow-x: auto;
+        max-width: 100%;
+
+        @include respond(xl) {
+            font-size: 1.4rem;
+        }
+
+        @include respond(lg) {
+            font-size: 1rem;
+        }
+
+        @include respond(md) {
+            font-size: .8rem;
+        }
+
+        @include respond(sm) {
+            font-size: .6rem;
+        }
+
+        @include respond(sm) {
+            font-size: .4rem;
+        }
     }
 
 }
