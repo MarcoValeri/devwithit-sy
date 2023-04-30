@@ -38,6 +38,10 @@
     p {
         font-size: 2.2rem;
         line-height: 1.6;
+
+        @include respond(md) {
+            font-size: 2.5rem;
+        }
     }
 
     p a {
@@ -97,6 +101,22 @@
         @include respond(sm) {
             font-size: .4rem;
         }
+    }
+
+    // Index
+    &__index {
+        margin: 2rem auto;
+        padding: 2rem;
+        border-radius: 5px;
+        border: 1px solid $blueLink;
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        // a {
+        //     text-decoration: none;
+        // }
     }
 
 }

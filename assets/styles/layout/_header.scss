@@ -7,4 +7,20 @@
         text-align: center;
         padding: 2rem;
     }
+
+    &__title {
+        font-size: 8rem;
+
+        @include respond(md) {
+            font-size: 6rem;
+        }
+    }
+
+    &__sub-title {
+        font-size: 6rem;
+
+        @include respond(md) {
+            font-size: 4rem;
+        }
+    }
 }
