@@ -7,6 +7,8 @@
     {% set guideUrl = guide.url %}
     {% set guideCreated = guide.created %}
     {% set guideUpdated = guide.updated %}
+    {% set guideImage = guide.getImage %}
+    {% set guideImageAlt = guide.getImage.title %}
     {% set guideContent = guide.content %}
 {% endif %}
 
@@ -63,6 +65,9 @@
                     </div>
                     <div class="article__container-content">
                         {{ guideContent | raw }}
+                        <div class="content__container-image">
+                            <img class="content__image" src="../images/{{ guideImage }}" alt="{{ guideImageAlt }}">
+                        </div>
                     </div>
                 </article>
             {% endif %}

@@ -7,7 +7,21 @@
     }
 
     &__image {
-        width: 100%;
+        max-width: 100%;
+    }
+
+    &__image-xl {
+        @include respond(sm) {
+            display: none;
+        }
+    }
+
+    &__image-sm {
+        display: none;
+
+        @include respond(sm) {
+            display: block;
+        }
     }
 
     // Style html content
@@ -72,15 +86,20 @@
     &__code-file {
         overflow-wrap: break-word;
     }
-    
+
     pre {
         background-color: $blackCode;
         color: $white;
+        display: block;
+        overflow-x: auto;
+    }
+    
+    code {
+        display: block;
         font-size: 1.6rem;
         padding: 1rem;
         white-space: pre-wrap;
-        overflow-x: auto;
-        max-width: 100%;
+        max-width: 80%;
 
         @include respond(xl) {
             font-size: 1.4rem;
