@@ -37,12 +37,8 @@
                                                 <p class="p p--bold">Created: {{ guide.created|date('d F Y') }} - Updated: {{ guide.updated|date('d F Y') }}</p>
                                             </div>
                                             <div class="article-card__container-content">
-                                                <div class="article-card__container-content-tags">
-                                                    <ul class="article-card__tags-menu">
-                                                        <li class="article-card__tag p">PHP</li>
-                                                        <li class="article-card__tag p">Symfony</li>
-                                                        <li class="article-card__tag p">MySQL</li>
-                                                    </ul>
+                                                <div class="article-card__container-image">
+                                                    <img class="article-card__image" src="images/{{ guide.getImage }}" alt="{{ guide.getImage.title }}" width="150" height="100" >
                                                 </div>
                                                 <div class="article-card__container-content-summary">
                                                     {% set guidePreview = guide.content|slice(0, 500) %}

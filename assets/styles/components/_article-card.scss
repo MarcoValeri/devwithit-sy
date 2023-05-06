@@ -33,25 +33,24 @@
         }
     }
 
-    &__container-content-tags {
-        width: 20%;
-        background-color: $blue;
+    &__container-image {
+        width: 15rem;
+        height: 10rem;
 
         @include respond(md) {
-            width: 100%;
+            width: 80%;
+            height: auto;
+            margin: 1rem auto;
         }
     }
 
-    &__tags-menu {
-        list-style: none;
-        text-align: center;
-        padding: 1rem 0;
-    }
+    &__image {
+        aspect-ratio: 150 / 100;
 
-    &__tag {
-        color: $white;
-        font-weight: 900;
-        padding: .5rem;
+        @include respond(md) {
+            width: 100%;
+            height: 15rem;
+        }
     }
 
     &__container-content-summary {
