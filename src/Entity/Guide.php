@@ -123,4 +123,12 @@ class Guide
 
         return $this;
     }
+
+    public function getSmImage(): string
+    {
+        $imageName = $this->image;
+        $pattern = "/.webp/";
+        $imageNameSm = preg_replace($pattern, "-sm.webp", $imageName);
+        return $imageNameSm;
+    }
 }
