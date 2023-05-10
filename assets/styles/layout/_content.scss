@@ -84,7 +84,7 @@
 
     // Code
     &__code-file {
-        overflow-wrap: break-word;
+        overflow-wrap: anywhere;
     }
 
     pre {
@@ -92,6 +92,7 @@
         color: $white;
         display: block;
         overflow-x: auto;
+        white-space: pre-wrap;
     }
     
     code {
