@@ -21,15 +21,19 @@
     }
 
     &__pre {
+        width: 100%;
         display: block;
         color: $white;
         padding: 0 1rem;
+        white-space: pre-wrap;
     }
 
     &__code {
+        width: 100%;
+        display: block;
         font-size: 1.6rem;
         white-space: pre-wrap;
-        word-break: unset;
+        word-break: break-all;
     }
 
 }

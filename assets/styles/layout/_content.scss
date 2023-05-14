@@ -1,6 +1,5 @@
 .content {
     padding: 2rem 0;
-    border: 1px solid #00f;
 
     &__container-image {
         width: 80%;
@@ -88,42 +87,6 @@
         overflow-wrap: anywhere;
     }
 
-    // pre {
-    //     background-color: $blackCode;
-    //     color: $white;
-    //     display: block;
-    //     overflow-x: auto;
-    //     white-space: pre-wrap;
-    // }
-    
-    // code {
-    //     display: block;
-    //     font-size: 1.6rem;
-    //     padding: 1rem;
-    //     white-space: pre-wrap;
-    //     max-width: 80%;
-
-    //     @include respond(xl) {
-    //         font-size: 1.4rem;
-    //     }
-
-    //     @include respond(lg) {
-    //         font-size: 1rem;
-    //     }
-
-    //     @include respond(md) {
-    //         font-size: .8rem;
-    //     }
-
-    //     @include respond(sm) {
-    //         font-size: .6rem;
-    //     }
-
-    //     @include respond(sm) {
-    //         font-size: .4rem;
-    //     }
-    // }
-
     // Index
     &__index {
         margin: 2rem auto;
@@ -135,9 +98,6 @@
             margin-bottom: 1rem;
         }
 
-        // a {
-        //     text-decoration: none;
-        // }
     }
 
 }
