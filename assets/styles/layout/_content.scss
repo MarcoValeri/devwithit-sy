@@ -87,6 +87,10 @@
         overflow-wrap: anywhere;
     }
 
+    &__tag {
+        background-color: $greyTag;
+    }
+
     // Index
     &__index {
         margin: 2rem auto;
