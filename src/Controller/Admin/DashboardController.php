@@ -4,13 +4,16 @@ namespace App\Controller\Admin;
 
 use App\Entity\Guide;
 use App\Entity\Image;
+use App\Entity\Node;
 use App\Entity\User;
+
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -35,6 +38,7 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Content');
         yield MenuItem::linkToCrud('Guides', 'fas fa-newspaper', Guide::class);
+        yield MenuItem::linkToCrud('Node', 'fas fa-newspaper', Node::class);
 
         yield MenuItem::section('Images');
         yield MenuItem::linkToCrud('Images', 'fas fa-newspaper', Image::class);

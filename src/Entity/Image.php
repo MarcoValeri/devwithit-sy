@@ -34,9 +34,13 @@ class Image
     #[ORM\OneToMany(targetEntity: Guide::class, mappedBy: 'image')]
     private $guide;
 
+    #[ORM\OneToMany(targetEntity: Node::class, mappedBy: 'image')]
+    private $node;
+
     public function __construct()
     {
         $this->guide = new ArrayCollection();
+        $this->node = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,6 +132,36 @@ class Image
             // set the owning side to null (unless already changed)
             if ($guide->getImage() === $this) {
                 $guide->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Node[]
+     */
+    public function getNode(): Collection
+    {
+        return $this->node;
+    }
+
+    public function addNode(Node $node): self
+    {
+        if (!$this->node->contains($node)) {
+            $this->node[] = $node;
+            $node->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNode(Node $node): self
+    {
+        if ($this->node->removeElement($node)) {
+            // set the owning side to null (unless already changed)
+            if ($node->getImage() === $this) {
+                $node->setImage(null);
             }
         }
 
