@@ -6,12 +6,23 @@
     <url>
         <loc>https://devwithit.com/guides</loc>
     </url>
+    <url>
+        <loc>https://devwithit.com/node-tutorial</loc>
+    </url>
     {% set getDateToday = "now"|date('U') %}
     {% for guide in guides %}
         {% if (getDateToday > guide.created|date('U')) %}
             <url>
                 <loc>https://devwithit.com/guide/{{ guide.url }}</loc>
                 <lastmod>{{ guide.updated|date('Y-m-d') }}</lastmod>
+            </url>
+        {% endif %}
+    {% endfor %}
+    {% for nodeTutorial in nodeTutorials %}
+        {% if (getDateToday > nodeTutorial.created|date('U')) %}
+            <url>
+                <loc>https://devwithit.com/node/{{ nodeTutorial.url }}</loc>
+                <lastmod>{{ nodeTutorial.updated|date('Y-m-d') }}</lastmod>
             </url>
         {% endif %}
     {% endfor %}

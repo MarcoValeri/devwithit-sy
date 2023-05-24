@@ -1,0 +1,43 @@
+{# 
+# Set up date variables.
+# Use seconds to compare date.
+# This date is +1hour to UK time
+# it is like Italy time
+#}
+{% set getDateToday = "now"|date('U') %}
+
+{% extends "base.html.twig" %}
+
+{% block title %}
+    <title>{{ pageTitle }}</title>
+{% endblock %}
+
+{% block titleHeader %}
+    <h2 class="h2">{{ pageTitle }}</h2>
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="main__content">
+            <div class="guides-archive">
+                <div class="latest-articles">
+                    <div class="latest-articles__container-title">
+                        <h2 class="latest-articles__title h2">Node Tutorial</h2>
+                    </div>
+                    <div class="latest-articles__container-articles">
+                        {% if (nodeTutorials) %}
+                            {% for nodeTutorial in nodeTutorials %}
+                                {% if getDateToday > nodeTutorial.created|date('U') %}
+                                    <ul>
+                                        <li><a href="node/{{ guide.url }}">{{ nodeTutorial.title}}</a></li>
+                                    </ul>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main__sidebar"></div>
+    </div>
+{% endblock %}

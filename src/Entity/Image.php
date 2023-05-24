@@ -109,14 +109,14 @@ class Image
     }
 
     /**
-     * @return Collection|Article[]
+     * @return Collection|Guide[]
      */
-    public function getArticle(): Collection
+    public function getGuide(): Collection
     {
         return $this->guide;
     }
 
-    public function addArticle(Guide $guide): self
+    public function addGuide(Guide $guide): self
     {
         if (!$this->guide->contains($guide)) {
             $this->guide[] = $guide;
@@ -126,7 +126,7 @@ class Image
         return $this;
     }
 
-    public function removeArticle(Guide $guide): self
+    public function removeGuide(Guide $guide): self
     {
         if ($this->guide->removeElement($guide)) {
             // set the owning side to null (unless already changed)

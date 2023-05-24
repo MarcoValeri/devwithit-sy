@@ -60,6 +60,9 @@
                             <li class="navbar__item">
                                 <a class="navbar__link link-effect-load {{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == "/guides" ? 'link-mark' : '' }}" href="{{ path('app_archive_guides') }}">Guides</a>
                             </li>
+                            <li class="navbar__item">
+                                <a class="navbar__link link-effect-load {{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == "/node-tutorial" ? 'link-mark' : '' }}" href="{{ path('app_tutorial_node') }}">Node</a>
+                            </li>
                             {% if is_granted('ROLE_ADMIN')  %}
                                 <li class="navbar__item">
                                     <a class="navbar__link link-effect-load" href="{{ path('app_admin') }}">Admin</a>

@@ -12,14 +12,27 @@ class NodeController extends AbstractController
     public function node(NodeRepository $nodeRepository, string $slug)
     {
         $node = $nodeRepository->findOneBy(['url' => $slug]);
+        $nodeTutorials = $nodeRepository->findAll();
 
         if ($node) {
-            return $this->render("nodes/node.html.twig", [
-                'node' => $node,
-                'slug' => $slug
+            return $this->render("node/node.html.twig", [
+                'node'          => $node,
+                'nodeTutorials' => $nodeTutorials,
+                'slug'          => $slug
             ]);
         } else {
             return $this->redirectToRoute('app_error404');
         }
+    }
+
+    #[Route('/node-tutorial', name: 'app_tutorial_node')]
+    public function nodeArchive(NodeRepository $nodeRepository)
+    {
+        $nodeTutorials = $nodeRepository->findAll();
+
+        return $this->render("node/node-tutorial.html.twig", [
+            "pageTitle"     => "Node Tutorial",
+            "nodeTutorials" => $nodeTutorials
+        ]);
     }
 }

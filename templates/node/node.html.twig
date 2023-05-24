@@ -1,0 +1,87 @@
+{% extends "base.html.twig" %}
+
+{# Set Guide's variables #}
+{% if node %}
+    {% set nodeTitle = node.title %}
+    {% set nodeDescription = node.description %}
+    {% set nodeUrl = node.url %}
+    {% set nodeCreated = node.created %}
+    {% set nodeUpdated = node.updated %}
+    {% set nodeImage = node.getImage %}
+    {% set nodeImageAlt = node.getImage.title %}
+    {% set nodeContent = node.content %}
+{% endif %}
+
+{# 
+# Set up date variables.
+# Use seconds to compare date.
+# This date is +1hour to UK time
+# it is like Italy time
+#}
+{% set getDateToday = "now"|date('U') %}
+
+{% block title %}
+    <title>{{ nodeTitle|raw }}</title>
+{% endblock %}
+
+{% block description %}
+    <meta name="Description" CONTENT="{{ nodeDescription|raw }}">
+{% endblock %}
+
+{% block data_structure %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "Article",
+            "headline": "{{ nodeTitle|raw }}"
+        },
+        {
+            "datePublished": "{{ nodeCreated|date('Y-m-d') }}",
+            "dateModified": "{{ nodeUpdated|date('Y-m-d') }}",
+            "author" {
+                "@type": "Person",
+            },
+        }
+    </script>
+{% endblock %}
+
+{% block titleHeader %}
+    <h2 class="h2">Node</h2>
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="main__content">
+            {% if (getDateToday > nodeCreated|date('U')) %}
+                <article class="article">
+                    <div class="article__container-title">
+                        <h1 class="h1">{{ nodeTitle }}</h1>
+                    </div>
+                    <div class="article__container-data">
+                        <ul class="article__menu-data">
+                            <li class="article__data p p--bold">Published: {{ nodeCreated|date('d-m-Y')  }}</li>
+                            <li class="article__data p p--bold">Updated: {{ nodeUpdated|date('d-m-Y')  }}</li>
+                        </ul>
+                    </div>
+                    <div class="article__container-content">
+                        {{ nodeContent | raw }}
+                        <div class="content__container-image">
+                            <img class="content__image" src="../images/{{ nodeImage }}" alt="{{ nodeImageAlt }}">
+                        </div>
+                    </div>
+                </article>
+            {% endif %}
+        </div>
+        <div class="main__sidebar">
+            <ol>
+                {% if (nodeTutorials) %}
+                    {% for nodeTutorial in nodeTutorials %}
+                        {% if getDateToday > nodeTutorial.created|date('U') %}
+                            <li><a href="node/{{ nodeTutorial.url }}">{{ nodeTutorial.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </ol>
+        </div>
+    </div>
+{% endblock %}
