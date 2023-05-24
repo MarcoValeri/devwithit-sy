@@ -18,7 +18,7 @@
                     </div>
                     <div class="latest-articles__container-articles">
                         {% if (guides) %}
-                            {% for guide in guides %}
+                            {% for guide in guides|reverse %}
                                 {% if getDateToday > guide.created|date('U') and loop.index < 10 %}
                                     <div class="article-card">
                                         <h1>{{ guide.getSmImage }}</h1>

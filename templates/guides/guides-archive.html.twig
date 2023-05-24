@@ -30,7 +30,7 @@
                     </div>
                     <div class="latest-articles__container-articles">
                         {% if (guides) %}
-                            {% for guide in guides %}
+                            {% for guide in guides|reverse %}
                                 {% if getDateToday > guide.created|date('U') and loop.index < 10 %}
                                     <div class="article-card">
                                         <a class="article-card__wrapper" href="guide/{{ guide.url }}">
