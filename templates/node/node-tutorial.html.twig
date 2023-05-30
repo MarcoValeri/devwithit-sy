@@ -33,7 +33,7 @@
                             {% for nodeTutorial in nodeTutorials|reverse %}
                                 {% if getDateToday > nodeTutorial.created|date('U') %}
                                     <ul>
-                                        <li><a href="node/{{ guide.url }}">{{ nodeTutorial.title}}</a></li>
+                                        <li><a href="node/{{ nodeTutorial.url }}">{{ nodeTutorial.title}}</a></li>
                                     </ul>
                                 {% endif %}
                             {% endfor %}
