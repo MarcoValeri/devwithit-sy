@@ -8,6 +8,7 @@
     {% set nodeCreated = node.created %}
     {% set nodeUpdated = node.updated %}
     {% set nodeImage = node.getImage %}
+    {% set nodeSmImage = node.getSmImage %}
     {% set nodeImageAlt = node.getImage.title %}
     {% set nodeContent = node.content %}
 {% endif %}
@@ -70,22 +71,28 @@
                     <div class="article__container-content">
                         {{ nodeContent | raw }}
                         <div class="content__container-image">
-                            <img class="content__image" src="../images/{{ nodeImage }}" alt="{{ nodeImageAlt }}">
+                            <img class="content__image content__image-xl" src="../images/{{ nodeImage }}" alt="{{ nodeImageAlt }}" width="630" height="300">
+                            <img class="content__image content__image-sm" src="../images/{{ nodeSmImage }}" alt="{{ nodeImageAlt }}" width="300" height="150">
                         </div>
                     </div>
                 </article>
             {% endif %}
         </div>
         <div class="main__sidebar">
-            <ol>
-                {% if (nodeTutorials) %}
-                    {% for nodeTutorial in nodeTutorials|reverse %}
-                        {% if getDateToday > nodeTutorial.created|date('U') %}
-                            <li><a href="node/{{ nodeTutorial.url }}">{{ nodeTutorial.title }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            </ol>
+            <div class="sidebar__container-title">
+                <h4 class="h4">Node.js Tutorials</h4>
+            </div>
+            <div>
+                <ol class="sidebar__tutorial-menu">
+                    {% if (nodeTutorials) %}
+                        {% for nodeTutorial in nodeTutorials|reverse %}
+                            {% if getDateToday > nodeTutorial.created|date('U') %}
+                                <li class="body-4"><a class="link--blue" href="{{ nodeTutorial.url }}">{{ nodeTutorial.title }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </ol>
+            </div>
         </div>
     </div>
 {% endblock %}

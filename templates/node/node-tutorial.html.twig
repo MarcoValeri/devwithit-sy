@@ -23,22 +23,20 @@
 {% block body %}
     <div class="main">
         <div class="main__content">
-            <div class="guides-archive">
-                <div class="latest-articles">
-                    <div class="latest-articles__container-title">
-                        <h2 class="latest-articles__title h2">Node Tutorial</h2>
-                    </div>
-                    <div class="latest-articles__container-articles">
-                        {% if (nodeTutorials) %}
-                            {% for nodeTutorial in nodeTutorials|reverse %}
-                                {% if getDateToday > nodeTutorial.created|date('U') %}
-                                    <ul>
-                                        <li><a href="node/{{ nodeTutorial.url }}">{{ nodeTutorial.title}}</a></li>
-                                    </ul>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                    </div>
+            <div class="tutorial">
+                <div class="tutorial__container-title">
+                    <h2 class="h2">Node Tutorial</h2>
+                </div>
+                <div>
+                    {% if (nodeTutorials) %}
+                        {% for nodeTutorial in nodeTutorials|reverse %}
+                            {% if getDateToday > nodeTutorial.created|date('U') %}
+                                <ol class="tutorial__index-menu">
+                                    <li class="body-2"><a class="link--blue" href="node/{{ nodeTutorial.url }}">{{ nodeTutorial.title}}</a></li>
+                                </ol>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>

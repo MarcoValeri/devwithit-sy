@@ -21,7 +21,6 @@
                             {% for guide in guides|reverse %}
                                 {% if getDateToday > guide.created|date('U') and loop.index < 10 %}
                                     <div class="article-card">
-                                        <h1>{{ guide.getSmImage }}</h1>
                                         <a class="article-card__wrapper" href="guide/{{ guide.url }}">
                                             <div class="article-card__container-title">
                                                 <h2 class="h3">{{ guide.title }}</h2>

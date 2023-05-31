@@ -85,6 +85,15 @@
     }
 }
 
+.link--blue {
+    color: $blueLink;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .link-effect-load {
     display: inline-block;
     position: relative;

@@ -8,6 +8,7 @@
     {% set guideCreated = guide.created %}
     {% set guideUpdated = guide.updated %}
     {% set guideImage = guide.getImage %}
+    {% set guideSmImage = guide.getSmImage %}
     {% set guideImageAlt = guide.getImage.title %}
     {% set guideContent = guide.content %}
 {% endif %}
@@ -70,7 +71,8 @@
                     <div class="article__container-content">
                         {{ guideContent | raw }}
                         <div class="content__container-image">
-                            <img class="content__image" src="../images/{{ guideImage }}" alt="{{ guideImageAlt }}">
+                            <img class="content__image content__image-xl" src="../images/{{ guideImage }}" alt="{{ guideImageAlt }}" width="630" height="300">
+                            <img class="content__image content__image-sm" src="../images/{{ guideSmImage }}" alt="{{ guideImageAlt }}" width="300" height="150">
                         </div>
                     </div>
                 </article>

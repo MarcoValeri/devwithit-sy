@@ -1,0 +1,12 @@
+.sidebar {
+    &__container-title {
+        color: $white;
+        background-color: $blue;
+        padding: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    &__tutorial-menu {
+        margin-left: 2rem;
+    }
+}
