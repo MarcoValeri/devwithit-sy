@@ -1,5 +1,9 @@
 .tutorial {
 
+    @include respond(sm) {
+        padding: 0 2rem;
+    }
+
     &__container-title {
         margin-bottom: 2rem;
     }

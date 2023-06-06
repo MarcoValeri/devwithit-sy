@@ -1,3 +1,40 @@
+// Button
+.button {
+    font-size: 1.6rem;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &__blue {
+        color: $white;
+        background-color: $blue;
+
+        &:hover {
+            color: $blue;
+            background-color: $white;
+            transform: translate(0, -2px);
+            box-shadow: 5px 5px 3px rgb(112, 112, 112);
+        }
+    }
+
+    &__white {
+        color: $blue;
+        background-color: $white;
+
+        &:hover {
+            color: $white;
+            background-color: $blue;
+            transform: translate(0, -2px);
+            border: 1px solid $white;
+        }
+    }
+}
+
 // Logo
 .brand-name {
     font-size: 4rem;

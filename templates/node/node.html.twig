@@ -85,7 +85,7 @@
             <div>
                 <ol class="sidebar__tutorial-menu">
                     {% if (nodeTutorials) %}
-                        {% for nodeTutorial in nodeTutorials|reverse %}
+                        {% for nodeTutorial in nodeTutorials %}
                             {% if getDateToday > nodeTutorial.created|date('U') %}
                                 <li class="body-4"><a class="link--blue" href="{{ nodeTutorial.url }}">{{ nodeTutorial.title }}</a></li>
                             {% endif %}

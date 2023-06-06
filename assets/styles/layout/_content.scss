@@ -104,4 +104,24 @@
 
     }
 
+    // Next content buttons
+    &__container-previous-next {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 2rem 0;
+        margin: 2rem auto;
+
+        @include respond(md) {
+            flex-direction: column;
+        }
+    }
+
+    &__container-previous {
+
+        @include respond(md) {
+            margin-bottom: 3rem;
+        }
+    }
+
 }
