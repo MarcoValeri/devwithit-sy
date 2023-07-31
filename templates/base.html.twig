@@ -67,7 +67,7 @@
                                 <a class="navbar__link link-effect-load {{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == "/" ? 'link-mark' : '' }}" href="{{ path('app_home') }}">Home</a>
                             </li>
                             <li class="navbar__item">
-                                <a class="navbar__link link-effect-load {{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == "/guides" ? 'link-mark' : '' }}" href="{{ path('app_archive_guides') }}">Guides</a>
+                                <a class="navbar__link link-effect-load {{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == "/guides-page-0" ? 'link-mark' : '' }}" href="{{ path('app_archive_guides', {pageNumber: 0}) }}">Guides</a>
                             </li>
                             <li class="navbar__item">
                                 <a class="navbar__link link-effect-load {{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == "/node-tutorial" ? 'link-mark' : '' }}" href="{{ path('app_tutorial_node') }}">Node</a>

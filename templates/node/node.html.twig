@@ -57,26 +57,24 @@
 {% block body %}
     <div class="main">
         <div class="main__content">
-            {% if (getDateToday > nodeCreated|date('U')) %}
-                <article class="article">
-                    <div class="article__container-title">
-                        <h1 class="h1">{{ nodeTitle }}</h1>
+            <article class="article">
+                <div class="article__container-title">
+                    <h1 class="h1">{{ nodeTitle }}</h1>
+                </div>
+                <div class="article__container-data">
+                    <ul class="article__menu-data">
+                        <li class="article__data p p--bold">Published: {{ nodeCreated|date('d-m-Y')  }}</li>
+                        <li class="article__data p p--bold">Updated: {{ nodeUpdated|date('d-m-Y')  }}</li>
+                    </ul>
+                </div>
+                <div class="article__container-content">
+                    {{ nodeContent | raw }}
+                    <div class="content__container-image">
+                        <img class="content__image content__image-xl" src="../images/{{ nodeImage }}" alt="{{ nodeImageAlt }}" width="630" height="300">
+                        <img class="content__image content__image-sm" src="../images/{{ nodeSmImage }}" alt="{{ nodeImageAlt }}" width="300" height="150">
                     </div>
-                    <div class="article__container-data">
-                        <ul class="article__menu-data">
-                            <li class="article__data p p--bold">Published: {{ nodeCreated|date('d-m-Y')  }}</li>
-                            <li class="article__data p p--bold">Updated: {{ nodeUpdated|date('d-m-Y')  }}</li>
-                        </ul>
-                    </div>
-                    <div class="article__container-content">
-                        {{ nodeContent | raw }}
-                        <div class="content__container-image">
-                            <img class="content__image content__image-xl" src="../images/{{ nodeImage }}" alt="{{ nodeImageAlt }}" width="630" height="300">
-                            <img class="content__image content__image-sm" src="../images/{{ nodeSmImage }}" alt="{{ nodeImageAlt }}" width="300" height="150">
-                        </div>
-                    </div>
-                </article>
-            {% endif %}
+                </div>
+            </article>
         </div>
         <div class="main__sidebar">
             <div class="sidebar__container-title">

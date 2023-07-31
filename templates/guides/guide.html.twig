@@ -13,14 +13,6 @@
     {% set guideContent = guide.content %}
 {% endif %}
 
-{# 
-# Set up date variables.
-# Use seconds to compare date.
-# This date is +1hour to UK time
-# it is like Italy time
-#}
-{% set getDateToday = "now"|date('U') %}
-
 {% block title %}
     <title>{{ guideTitle|raw }}</title>
 {% endblock %}
@@ -57,26 +49,24 @@
 {% block body %}
     <div class="main">
         <div class="main__content">
-            {% if (getDateToday > guideCreated|date('U')) %}
-                <article class="article">
-                    <div class="article__container-title">
-                        <h1 class="h1">{{ guideTitle }}</h1>
+            <article class="article">
+                <div class="article__container-title">
+                    <h1 class="h1">{{ guideTitle }}</h1>
+                </div>
+                <div class="article__container-data">
+                    <ul class="article__menu-data">
+                        <li class="article__data p p--bold">Published: {{ guideCreated|date('d-m-Y')  }}</li>
+                        <li class="article__data p p--bold">Updated: {{ guideUpdated|date('d-m-Y')  }}</li>
+                    </ul>
+                </div>
+                <div class="article__container-content">
+                    {{ guideContent | raw }}
+                    <div class="content__container-image">
+                        <img class="content__image content__image-xl" src="../images/{{ guideImage }}" alt="{{ guideImageAlt }}" width="630" height="300">
+                        <img class="content__image content__image-sm" src="../images/{{ guideSmImage }}" alt="{{ guideImageAlt }}" width="300" height="150">
                     </div>
-                    <div class="article__container-data">
-                        <ul class="article__menu-data">
-                            <li class="article__data p p--bold">Published: {{ guideCreated|date('d-m-Y')  }}</li>
-                            <li class="article__data p p--bold">Updated: {{ guideUpdated|date('d-m-Y')  }}</li>
-                        </ul>
-                    </div>
-                    <div class="article__container-content">
-                        {{ guideContent | raw }}
-                        <div class="content__container-image">
-                            <img class="content__image content__image-xl" src="../images/{{ guideImage }}" alt="{{ guideImageAlt }}" width="630" height="300">
-                            <img class="content__image content__image-sm" src="../images/{{ guideSmImage }}" alt="{{ guideImageAlt }}" width="300" height="150">
-                        </div>
-                    </div>
-                </article>
-            {% endif %}
+                </div>
+            </article>
         </div>
         <div class="main__sidebar">
             {# Sidebar #}

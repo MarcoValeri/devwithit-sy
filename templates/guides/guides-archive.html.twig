@@ -1,11 +1,3 @@
-{# 
-# Set up date variables.
-# Use seconds to compare date.
-# This date is +1hour to UK time
-# it is like Italy time
-#}
-{% set getDateToday = "now"|date('U') %}
-
 {% extends "base.html.twig" %}
 
 {% block title %}
@@ -13,7 +5,7 @@
 {% endblock %}
 
 {% block canonical %}
-    <link rel="canonical" href="https://devwithit.com/guides">
+    <link rel="canonical" href="https://devwithit.com/guides-page-{{ pageNumber }}">
 {% endblock %}
 
 {% block titleHeader %}
@@ -29,31 +21,41 @@
                         <h2 class="latest-articles__title h2">Guides Archive</h2>
                     </div>
                     <div class="latest-articles__container-articles">
-                        {% if (guides) %}
-                            {% for guide in guides|reverse %}
-                                {% if getDateToday > guide.created|date('U') and loop.index < 10 %}
-                                    <div class="article-card">
-                                        <a class="article-card__wrapper" href="guide/{{ guide.url }}">
-                                            <div class="article-card__container-title">
-                                                <h2 class="h3">{{ guide.title }}</h2>
-                                            </div>
-                                            <div class="article-card__container-data">
-                                                <p class="p p--bold">Created: {{ guide.created|date('d F Y') }} - Updated: {{ guide.updated|date('d F Y') }}</p>
-                                            </div>
-                                            <div class="article-card__container-content">
-                                                <div class="article-card__container-image">
-                                                    <img class="article-card__image" src="images/{{ guide.getSmImage }}" alt="{{ guide.getImage.title }}" width="150" height="100" >
-                                                </div>
-                                                <div class="article-card__container-content-summary">
-                                                    {% set guidePreview = guide.content|slice(0, 500) %}
-                                                    <p class="article-card__summary body-3">{{ guidePreview|striptags }}...</p>
-                                                </div>
-                                            </div>
-                                        </a>
+                        {% for guide in guides %}
+                            <div class="article-card">
+                                <a class="article-card__wrapper" href="guide/{{ guide.url }}">
+                                    <div class="article-card__container-title">
+                                        <h2 class="h3">{{ guide.title }}</h2>
                                     </div>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
+                                    <div class="article-card__container-data">
+                                        <p class="p p--bold">Created: {{ guide.created|date('d F Y') }} - Updated: {{ guide.updated|date('d F Y') }}</p>
+                                    </div>
+                                    <div class="article-card__container-content">
+                                        <div class="article-card__container-image">
+                                            <img class="article-card__image" src="images/{{ guide.file_name|split('.webp')|join('-sm.webp') }}" alt="{{ guide.alternative_text }}" width="150" height="100" >
+                                        </div>
+                                        <div class="article-card__container-content-summary">
+                                            {% set guidePreview = guide.content|slice(0, 500) %}
+                                            <p class="article-card__summary body-3">{{ guidePreview|striptags }}...</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% set prevPageNumber = pageNumber - 1 %}
+                    {% set nextPageNumber = pageNumber + 1 %}
+                    <div class="content__container-previous-next">
+                        <div class="content__container-previous">
+                            {% if prevPageNumber >= 0 %}
+                                <a class="button button__blue" href="{{ path('app_archive_guides', {pageNumber: prevPageNumber}) }}">Prev</a>
+                            {% endif %}
+                        </div>
+                        <div>
+                            {% if guides|length == 10 %}
+                                <a class="button button__blue" href="{{ path('app_archive_guides', {pageNumber: nextPageNumber}) }}">Next</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>

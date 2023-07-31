@@ -12,9 +12,11 @@ class NodeController extends AbstractController
     public function node(NodeRepository $nodeRepository, string $slug)
     {
         $node = $nodeRepository->findOneBy(['url' => $slug]);
+        $nodeDate = $node->getCreated()->format('U');
+        $todayDate = date('U');
         $nodeTutorials = $nodeRepository->findAll();
 
-        if ($node) {
+        if ($node && $todayDate > $nodeDate) {
             return $this->render("node/node.html.twig", [
                 'node'          => $node,
                 'nodeTutorials' => $nodeTutorials,
