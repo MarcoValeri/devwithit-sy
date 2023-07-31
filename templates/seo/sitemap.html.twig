@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.devwithit.com/</loc>
+        <loc>https://devwithit.com/</loc>
     </url>
     <url>
-        <loc>https://www.devwithit.com/guides</loc>
+        <loc>https://devwithit.com/guides</loc>
     </url>
     {% set getDateToday = "now"|date('U') %}
     {% for guide in guides %}
         {% if (getDateToday > guide.created|date('U')) %}
             <url>
-                <loc>https://www.devwithit.com/guide/{{ guide.url }}</loc>
+                <loc>https://devwithit.com/guide/{{ guide.url }}</loc>
                 <lastmod>{{ guide.updated|date('Y-m-d') }}</lastmod>
             </url>
         {% endif %}
     {% endfor %}
     <url>
-        <loc>https://www.devwithit.com/node-tutorial</loc>
+        <loc>https://devwithit.com/node-tutorial</loc>
     </url>
     {% for nodeTutorial in nodeTutorials %}
         {% if (getDateToday > nodeTutorial.created|date('U')) %}
             <url>
-                <loc>https://www.devwithit.com/node/{{ nodeTutorial.url }}</loc>
+                <loc>https://devwithit.com/node/{{ nodeTutorial.url }}</loc>
                 <lastmod>{{ nodeTutorial.updated|date('Y-m-d') }}</lastmod>
             </url>
         {% endif %}
