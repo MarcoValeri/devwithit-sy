@@ -1,0 +1,45 @@
+{# 
+# Set up date variables.
+# Use seconds to compare date.
+# This date is +1hour to UK time
+# it is like Italy time
+#}
+{% set getDateToday = "now"|date('U') %}
+
+{% extends "base.html.twig" %}
+
+{% block title %}
+    <title>{{ pageTitle }}</title>
+{% endblock %}
+
+{% block canonical %}
+    <link rel="canonical" href="https://devwithit.com/react-tutorial">
+{% endblock %}
+
+{% block titleHeader %}
+    <h2 class="h2">{{ pageTitle }}</h2>
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="main__content">
+            <div class="tutorial">
+                <div class="tutorial__container-title">
+                    <h2 class="h2">React Tutorial</h2>
+                </div>
+                <div>
+                    {% if (reactTutorials) %}
+                        <ol class="tutorial__index-menu">
+                            {% for reactTutorial in reactTutorials %}
+                                {% if getDateToday > reactTutorial.created|date('U') %}
+                                    <li class="body-2"><a class="link--blue" href="react/{{ reactTutorial.url }}">{{ reactTutorial.title}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="main__sidebar"></div>
+    </div>
+{% endblock %}

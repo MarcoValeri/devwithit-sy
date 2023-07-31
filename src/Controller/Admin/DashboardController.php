@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Guide;
 use App\Entity\Image;
 use App\Entity\Node;
+use App\Entity\React;
 use App\Entity\User;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -38,10 +39,11 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Content');
         yield MenuItem::linkToCrud('Guides', 'fas fa-newspaper', Guide::class);
-        yield MenuItem::linkToCrud('Node', 'fas fa-newspaper', Node::class);
+        yield MenuItem::linkToCrud('Node', 'fa-brands fa-node-js', Node::class);
+        yield MenuItem::linkToCrud('React', 'fa-brands fa-react', React::class);
 
         yield MenuItem::section('Images');
-        yield MenuItem::linkToCrud('Images', 'fas fa-newspaper', Image::class);
+        yield MenuItem::linkToCrud('Images', 'fa-solid fa-image', Image::class);
 
         yield MenuItem::section('Users');
         yield MenuItem::linkToCrud('Users', 'fas fa-user', User::class);

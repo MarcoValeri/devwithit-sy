@@ -1,0 +1,96 @@
+{% extends "base.html.twig" %}
+
+{# Set Guide's variables #}
+{% if react %}
+    {% set reactTitle = react.title %}
+    {% set reactDescription = react.description %}
+    {% set reactUrl = react.url %}
+    {% set reactCreated = react.created %}
+    {% set reactUpdated = react.updated %}
+    {% set reactImage = react.getImage %}
+    {% set reactSmImage = react.getSmImage %}
+    {% set reactImageAlt = react.getImage.title %}
+    {% set reactContent = react.content %}
+{% endif %}
+
+{# 
+# Set up date variables.
+# Use seconds to compare date.
+# This date is +1hour to UK time
+# it is like Italy time
+#}
+{% set getDateToday = "now"|date('U') %}
+
+{% block title %}
+    <title>{{ reactTitle|raw }}</title>
+{% endblock %}
+
+{% block description %}
+    <meta name="Description" CONTENT="{{ reactDescription|raw }}">
+{% endblock %}
+
+{% block data_structure %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "Article",
+            "headline": "{{ reactTitle|raw }}"
+        },
+        {
+            "datePublished": "{{ reactCreated|date('Y-m-d') }}",
+            "dateModified": "{{ reactUpdated|date('Y-m-d') }}",
+            "author" {
+                "@type": "Person",
+            },
+        }
+    </script>
+{% endblock %}
+
+{% block canonical %}
+    <link rel="canonical" href="https://devwithit.com/react/{{ reactUrl }}">
+{% endblock %}
+
+{% block titleHeader %}
+    <h2 class="h2">React</h2>
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="main__content">
+            <article class="article">
+                <div class="article__container-title">
+                    <h1 class="h1">{{ reactTitle }}</h1>
+                </div>
+                <div class="article__container-data">
+                    <ul class="article__menu-data">
+                        <li class="article__data p p--bold">Published: {{ reactCreated|date('d-m-Y')  }}</li>
+                        <li class="article__data p p--bold">Updated: {{ reactUpdated|date('d-m-Y')  }}</li>
+                    </ul>
+                </div>
+                <div class="article__container-content">
+                    {{ reactContent | raw }}
+                    <div class="content__container-image">
+                        <img class="content__image content__image-xl" src="../images/{{ reactImage }}" alt="{{ reactImageAlt }}" width="630" height="300">
+                        <img class="content__image content__image-sm" src="../images/{{ reactSmImage }}" alt="{{ reactImageAlt }}" width="300" height="150">
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="main__sidebar">
+            <div class="sidebar__container-title">
+                <h4 class="h4">React Tutorials</h4>
+            </div>
+            <div>
+                <ol class="sidebar__tutorial-menu">
+                    {% if (reactTutorials) %}
+                        {% for reactTutorial in reactTutorials %}
+                            {% if getDateToday > reactTutorial.created|date('U') %}
+                                <li class="body-4"><a class="link--blue" href="{{ reactTutorial.url }}">{{ reactTutorial.title }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </ol>
+            </div>
+        </div>
+    </div>
+{% endblock %}

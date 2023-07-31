@@ -37,10 +37,14 @@ class Image
     #[ORM\OneToMany(targetEntity: Node::class, mappedBy: 'image')]
     private $node;
 
+    #[ORM\OneToMany(targetEntity: React::class, mappedBy: 'image')]
+    private $react;
+
     public function __construct()
     {
         $this->guide = new ArrayCollection();
         $this->node = new ArrayCollection();
+        $this->react = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -162,6 +166,36 @@ class Image
             // set the owning side to null (unless already changed)
             if ($node->getImage() === $this) {
                 $node->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|React[]
+     */
+    public function getReact(): Collection
+    {
+        return $this->react;
+    }
+
+    public function addReact(React $react): self
+    {
+        if (!$this->react->contains($react)) {
+            $this->react[] = $react;
+            $react->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReact(React $react): self
+    {
+        if ($this->react->removeElement($react)) {
+            // set the owning side to null (unless already changed)
+            if ($react->getImage() === $this) {
+                $react->setImage(null);
             }
         }
 
